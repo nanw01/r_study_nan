@@ -1,0 +1,13 @@
+name: German_credit
+title: German_credit
+username:
+account: nanwang
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1577091
+bundleId: 2650550
+url: https://nanwang.shinyapps.io/German_credit/
+when: 1575833422.34584
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData

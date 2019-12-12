@@ -1,0 +1,22 @@
+---
+title: "Titanic_Practice"
+author: "Nan"
+date: "12/8/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Titanic Practice
+
+##### summary(titanic)
+```{r echo=FALSE}
+library(rpart)
+library(titanic)
+
+mydf = as.data.frame(titanic_train)
+summary(mydf)
+
+```
