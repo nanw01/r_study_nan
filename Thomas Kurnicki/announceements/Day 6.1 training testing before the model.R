@@ -1,5 +1,5 @@
 library(readxl)
-german_credit <- read_excel("../Basic data/german credit card.xls")
+german_credit <- read_excel("./Thomas Kurnicki/Basic data/german credit card.xls")
 german_credit$good_bad <- gsub("good",1,german_credit$good_bad)
 german_credit$good_bad <- gsub("bad",0,german_credit$good_bad)
 german_credit$good_bad <- as.numeric(german_credit$good_bad)
@@ -19,8 +19,8 @@ my_mod <- glm(good_bad~age, data=gc_train, family="binomial")
 summary(my_mod)
 
 # family 参数的不同写法，代表不同的方式
-my_mod <- glm(good_bad~age, data=gc_train, family=binomial(link="logit"))
-summary(my_mod)
+# my_mod <- glm(good_bad~age, data=gc_train, family=binomial(link="logit"))
+# summary(my_mod)
 
 #using the model to predict the 1/0 var in the test dataset
 # 返回列表是没个数据的概率
@@ -30,7 +30,7 @@ predict(my_mod, gc_test, type="response")
 #what if it got just 1s and no 0s?
 #then you would do stratified sampling
 #install.packages("caTools")
-# 一个基础工具包
+# 一个基础工具包,同样的方式进行测试数据跟训练数据的分割
 library(caTools) 
 train_index <- sample.split(german_credit$good_bad, SplitRatio=0.7)
 train <- german_credit[ train_index,]
