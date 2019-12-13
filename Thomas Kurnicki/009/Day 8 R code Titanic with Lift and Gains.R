@@ -1,11 +1,12 @@
 #install.packages("rpart")
 #install.packages("rpart.plot")
-#install.packages("titanic")
-#install.packages("ROCR")
+install.packages("titanic")
+install.packages("ROCR")
   ##############################
   #Creating a logistic regression for titanic
   ##############################
 library(rpart)
+library(titanic)
 mydf_train <- as.data.frame(titanic_train)
 summary(mydf_train)#let's see what's in the data
 View(mydf_train)

@@ -30,7 +30,7 @@ predict(my_mod, gc_test, type="response")
 #what if it got just 1s and no 0s?
 #then you would do stratified sampling
 #install.packages("caTools")
-# 一个基础工具包,同样的方式进行测试数据跟训练数据的分割
+# 一个基础工具包,同样的方式进行测试数据跟训练数据的分割，选择数据
 library(caTools) 
 train_index <- sample.split(german_credit$good_bad, SplitRatio=0.7)
 train <- german_credit[ train_index,]
@@ -41,7 +41,7 @@ my_mod <- glm(good_bad~age, data=train, family="binomial")
 summary(my_mod)
 
 #using the model to predict the 1/0 var in the test dataset with stratified sampling
-test$response <- predict(my_mod, test, type="response")
+test$response_0 <- predict(my_mod, test, type="response")
 View(test)
 
 #now that we know that the response from the model is bad quality, 
@@ -52,8 +52,11 @@ my_mod <- glm(good_bad~telephon+property+duration+checking, data=train, family="
 summary(my_mod)
 
 #using the model to predict the 1/0 var in the test dataset with stratified sampling
-test$response <- predict(my_mod, test, type="response")
+?preedict
+test$response_1 <- predict(my_mod, test, type="response")
 View(test)
+
+
 
 #suddenly our model is much better! Take a look at the AIC score - it's getting lower
 #also, look at some of the 0s and how low the probability is!!
