@@ -19,17 +19,17 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-       sliderInput("bins",
-                   "Number of bins:",
-                   min = 1,
-                   max = 50,
-                   value = 30)
+       sliderInput("cp",
+                   "value of cp:",
+                   min = 0.001,
+                   max = 0.2,
+                   value = 0.013)
     ),
-    
+
     # Show a plot of the generated distribution
     mainPanel(
       plotlyOutput(outputId = "p"),
-      rHandsontableOutput("hot")
+      plotOutput("hot")
       # ,
       # plotlyOutput(outputId = "xxxxxx"),
       # plotlyOutput(outputId = "xxxxxxxx")

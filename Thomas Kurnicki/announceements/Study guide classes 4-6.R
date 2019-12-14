@@ -141,5 +141,3 @@ summary(my_mod)
 test$response <- predict(my_mod, test, type = "response")
 View(test)
 
-?kyphosis
-?titanic_test

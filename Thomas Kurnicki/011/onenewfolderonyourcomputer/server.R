@@ -5,10 +5,12 @@ library(plotly)
 library(rpart)
 library(rpart.plot)
 library(rhandsontable)
+library(MASS)
+
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
   library(readxl)
-  mydf <- read_excel("./german credit card.xls")
+  mydf <- read_excel("../../Basic data/german credit card.xls")
 
   # mydf$purpose <- as.numeric(gusb("x","",mydf$purpose))
   
@@ -23,13 +25,12 @@ shinyServer(function(input, output, session) {
     z
   })
   
+  output$hot <- renderPlot({
   
-  
-  
-  output$hot <- renderRHandsontable({
-    DF <<- as.data.frame(event_data("plotly_selected"))
-    if (!is.null(DF))
-      rhandsontable(DF, stretchH = "all")
+    my_tree <- rpart(ulcer ~ time+status+sex+age+year+thickness,
+                     data = Melanoma, method = "class", cp = input$cp)
+    rpart.plot(my_tree, type = 1, extra = 1)
+    
   })
   ###########################################
   ###########################################
